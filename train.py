@@ -127,7 +127,7 @@ def main(args):
 
             config = {
                 'smp_args' : {'encoder_name' : args.encoder_name, 'classes' : len(color2idx)},
-                'crop_size' : 128
+                'crop_size' : args.crop_size
             }
 
             with open(os.path.join(output_dir, 'config.json'), 'w') as json_file:
