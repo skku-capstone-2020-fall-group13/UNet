@@ -1,16 +1,13 @@
 from typing import *
-
 import os
 import json
+import numpy as np
 import torch
 from torch.utils.data import TensorDataset, DataLoader
 import torchvision.transforms as transforms
 
-import numpy as np
-
 import segmentation_models_pytorch as smp
-
-from transform import Unfold
+from .transform import Unfold
 
 class UnetPipeline(object):
     def __init__(self):

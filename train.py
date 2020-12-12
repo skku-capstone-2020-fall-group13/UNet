@@ -15,8 +15,8 @@ from torch.utils.data import TensorDataset, DataLoader, SubsetRandomSampler
 import torchvision.transforms as transforms
 import segmentation_models_pytorch as smp
 
-from transform import Unfold, RotateAll, AdjustColor, CloneCat
-from util import init_logger, set_seed, rgb_to_cat, color2idx
+from unet.transform import Unfold, RotateAll, AdjustColor, CloneCat
+from unet.util import init_logger, set_seed, rgb_to_cat, color2idx
 
 import multiprocessing
 from sklearn.model_selection import train_test_split
