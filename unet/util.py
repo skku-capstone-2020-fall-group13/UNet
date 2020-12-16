@@ -32,24 +32,18 @@ def set_seed(seed):
     torch.manual_seed(seed)
 
 
-def cat_to_rgb(cat_arr):
-    arr = np.zeros((*cat_arr.shape[:2], 3), dtype=np.int)
-    for i in range(len(arr)):
-        for j in range(len(arr[0])):
-            if cat_arr[i,j] in idx2color:
-                arr[i,j] = idx2color[cat_arr[i,j]]
-            else:
-                arr[i,j] = (255, 255, 255)
-    
+def rgb_to_cat(rgb_arr):
+    arr = np.ndarray(shape=rgb_arr.shape[:2], dtype=np.uint8)
+    arr[:,:] = 8
+    for rgb, idx in color2idx.items():
+        arr[(rgb_arr==rgb).all(2)] = idx
+        
     return arr
 
-def rgb_to_cat(rgb_arr):
-    arr = np.zeros(rgb_arr.shape[:2], dtype=np.int64)
-    for i in range(len(arr)):
-        for j in range(len(arr[0])):
-            if tuple(rgb_arr[i,j]) in color2idx:
-                arr[i,j] = color2idx[tuple(rgb_arr[i,j])]
-            else:
-                arr[i,j] = 8
-        
+def cat_to_rgb(cat_arr):
+    arr = np.zeros((*cat_arr.shape[:2], 3), dtype=np.uint8)
+    arr[:,:] = (255, 255, 255)
+    for idx, rgb in idx2color.items():
+        arr[(cat_arr==idx)] = rgb
+    
     return arr
