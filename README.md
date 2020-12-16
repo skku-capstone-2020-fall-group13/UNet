@@ -1,13 +1,22 @@
 # UNet
 
 ## Install
-```
+```shell
 python setup.py install
 pip install .
 ```
 
-## Train Model
+## Using trained model
+```python
+from unet import UnetPipeline
+
+model = UnetPipeline()
+model.load(PATH_TO_MODEL_DIRECTORY)
+model.predict(np.array(...))
 ```
+
+## Train Model
+```shell
 python train.py \
   --seed int \
   --data_dir path_to_data_folder \
